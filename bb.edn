@@ -1,0 +1,3 @@
+{:tasks
+ {dev:repl {:doc "Starts the REPL"
+            :task (shell "dotnet cljr -A:test:dev")}}}
