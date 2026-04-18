@@ -1,0 +1,8 @@
+(ns build)
+
+
+(defn run-aot!
+  [& {:as _opts}]
+  (binding [*compile-path* "classes"]
+    (println "AOT compiling to:" *compile-path*)
+    (compile 'foo.core)))

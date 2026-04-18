@@ -1,0 +1,12 @@
+(ns foo.core
+  (:gen-class)
+  (:require [clojure.data.json :as json])
+  (:import
+   [System DateTime]))
+
+(defn -main
+  [& _args]
+  (println "Hello CLR world. Time is " DateTime/Now)
+  (println "json roundtrip: " (-> {:a 1}
+                                  json/write-str
+                                  (json/read-str :key-fn keyword))))

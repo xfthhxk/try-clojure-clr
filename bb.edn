@@ -1,0 +1,7 @@
+{:tasks
+ {dev:repl {:doc "Starts the REPL"
+            :task (shell "dotnet cljr -A:test:dev")}
+  run:main {:doc "Run foo.core/-main"
+            :task (shell "dotnet cljr -m foo.core")}
+  build:aot {:doc "Build project"
+             :task (shell "dotnet cljr -X build/run-aot!")}}}
