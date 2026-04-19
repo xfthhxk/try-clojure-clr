@@ -2,7 +2,7 @@
 let
   nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/archive/c7f47036d3df2add644c46d712d14262b7d86c0c.tar.gz";
   pkgs = import nixpkgs { config = {}; overlays = []; };
-  dotnet-sdk = pkgs.dotnetCorePackages.sdk_10_0;
+  dotnet-sdk = pkgs.dotnetCorePackages.sdk_11_0;
   commonPackages = [
     dotnet-sdk
     pkgs.clojure
@@ -10,7 +10,6 @@ let
     pkgs.bbin
     pkgs.clj-kondo
     pkgs.cljfmt
-    pkgs.dotnet-sdk_10
     pkgs.zsh
   ];
 
@@ -29,7 +28,8 @@ pkgs.mkShell {
 
   shellHook = ''
     export DOTNET_ROOT="${dotnet-sdk}/share/dotnet";
-    # This allows tools built for .NET 6/7/8/9 to run on .NET 10
+    export DOTNET_CLI_TELEMETRY_OPTOUT=1;
+    # This allows tools built for .NET 6/7/8/9/10 to run on .NET 11
     export DOTNET_ROLL_FORWARD=LatestMajor
     export PATH="$PATH:$HOME/.dotnet/tools"
     exec zsh

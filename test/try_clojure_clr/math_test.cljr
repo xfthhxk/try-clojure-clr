@@ -1,0 +1,11 @@
+(ns try-clojure-clr.math-test
+  (:require
+   [try-clojure-clr.math :as math]
+   [clojure.test :refer [deftest is]]))
+
+(deftest square-test
+  (is (= 4 (math/square -2)))
+  (is (= 1 (math/square -1)))
+  (is (= 0 (math/square 0)))
+  (is (= 1 (math/square 1)))
+  (is (= 4 (math/square 2))))

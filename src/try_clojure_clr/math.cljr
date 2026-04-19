@@ -1,4 +1,4 @@
-(ns main)
+(ns try-clojure-clr.math)
 
 
 (defn square

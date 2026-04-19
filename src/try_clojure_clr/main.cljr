@@ -1,0 +1,44 @@
+(ns try-clojure-clr.main
+  (:require
+   ;; [clojure.data.json :as json]
+   [clojure.walk :as walk]
+   ;; [nexus.core :as nexus]
+   ;; [nexus.registry :as nxr]
+   ))
+
+
+(defn -main
+  [& _args]
+  (println "hello ClojureCLR" DateTime/Now))
+
+(defn json-roundtrip
+  []
+  (let [m {:a 1}]
+    (-> m
+        json/write-str
+        (json/read-str :key-fn keyword))))
+
+(comment
+  (walk/stringify-keys {:a {:b 2}})
+
+  ;; (nexus.registry/get-registry)
+
+  ;; (nexus/action? [])
+
+  (ex-info "foo" {:a 1})
+
+  (try
+    ;(/ 1 0)
+    DateTime/Now
+    (catch Exception e
+      (def -e e)
+      (println "caught " e)))
+
+  (.Message -e)
+
+ #inst "2026-04-19T19:30:11.978-00:00"
+ #inst "2026-04-19T19:30:16.351-00:00"
+ DateTime/UnixEpoch
+ (.ToUnixTimeMilliseconds DateTimeOffset/Now)
+
+  )

@@ -1,3 +1,5 @@
 {:tasks
- {dev:repl {:doc "Starts the REPL"
-            :task (shell "dotnet cljr -A:test:dev")}}}
+ {dev:repl {:doc "alt repl"
+            :task (shell "dotnet msbuild /t:clj-nrepl")}
+  test {:doc "Runs tests"
+        :task (shell "dotnet test")}}}

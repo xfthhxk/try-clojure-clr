@@ -1,6 +1,4 @@
-(ns user
-  (:require
-   [clojure.tools.nrepl :as nrepl]))
+(ns user)
 
 ;; ------------------------------------------------------------------------
 ;; WARNING         WARNING         WARNING         WARNING         WARNING
@@ -11,16 +9,9 @@
 ;; WARNING         WARNING         WARNING         WARNING         WARNING
 ;; ----------------------------------------------------------------------
 
-(defonce ^:dynamic *nrepl-server* nil)
-
 (defn dev
   "Load and switch to the 'dev' namespace."
   []
   (require 'dev)
   (in-ns 'dev)
   :loaded)
-
-
-(when-not *nrepl-server*
-  (let [srv (nrepl/start-server!)]
-    (alter-var-root #'*nrepl-server* (constantly srv))))
