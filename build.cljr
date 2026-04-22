@@ -1,8 +1,13 @@
-(ns build)
+(ns build
+  (:import
+   (System.IO Directory)))
 
+(def target-dir "assemblies")
 
 (defn run-aot!
   [& {:as _opts}]
-  (binding [*compile-path* "classes"]
+  (when-not (Directory/Exists target-dir)
+    (Directory/CreateDirectory target-dir))
+  (binding [*compile-path* target-dir]
     (println "AOT compiling to:" *compile-path*)
     (compile 'foo.core)))

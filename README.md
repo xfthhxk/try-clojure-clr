@@ -19,6 +19,20 @@ dotnet cljr
 ```
 
 
+### Build
+
+This will manage gathering up all the deps and putting them in the `assemblies` directory
+```
+bb build:aot
+dotnet publish -c Release -o ./assemblies/
+cp foo.core.runtimeconfig.json ./assemblies/
+```
+
+Run:
+```
+dotnet ./assemblies/foo.core.exe
+```
+
 Babashka
 Launch
 ```shell
